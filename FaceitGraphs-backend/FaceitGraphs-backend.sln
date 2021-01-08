@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceitGraphs-backend", "FaceitGraphs-backend\FaceitGraphs-backend.csproj", "{FDE7239D-8FE0-465C-B6CA-7259C688ED42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDE7239D-8FE0-465C-B6CA-7259C688ED42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDE7239D-8FE0-465C-B6CA-7259C688ED42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE7239D-8FE0-465C-B6CA-7259C688ED42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDE7239D-8FE0-465C-B6CA-7259C688ED42}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
