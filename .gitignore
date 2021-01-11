@@ -486,3 +486,9 @@ riderModule.iml
 /projectSettingsUpdater.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+*appsettings.Development.json
+*appsettings.json
+appsettings.Development.json
+appsettings.json
+/appsettings.Development.json
+/appsettings.json

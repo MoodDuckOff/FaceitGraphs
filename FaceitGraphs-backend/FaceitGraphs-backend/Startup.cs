@@ -10,27 +10,31 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AutoMapper;
+using FaceitGraphs_backend.Interfaces;
+using FaceitGraphs_backend.Providers;
+using Newtonsoft.Json;
 
 namespace FaceitGraphs_backend
 {
     public class Startup
     {
-        private readonly IConfiguration _configuration;
+        public IConfiguration Configuration { get;}
 
         public Startup(IConfiguration configuration)
         {
-            _configuration = configuration;
+            Configuration = configuration;
         }
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>();
             services.AddCors();
-            //services.AddControllers().AddNewtonsoftJson(options =>options.SerializerSettings.ReferenceLoopHandling =ReferenceLoopHandling.Ignore);
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddHttpClient();
+            //services.AddControllers().AddNewtonsoftJson(options =>options.SerializerSettings.ReferenceLoopHandling =ReferenceLoopHandling.Ignore);
             //var appSettingsSection = _configuration.GetSection("AppSettings");
             //services.Configure<AppSettings>(appSettingsSection);
-            
-            //services.AddScoped<Service>();
+
+            services.AddScoped<IPlayerProvider, PlayerProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
