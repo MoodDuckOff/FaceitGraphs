@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using FaceitGraphs_backend.Helpers;
 using Microsoft.AspNetCore.Builder;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using AutoMapper;
 using FaceitGraphs_backend.Interfaces;
 using FaceitGraphs_backend.Providers;
+using FaceitGraphs_backend.Services;
 using Newtonsoft.Json;
 
 namespace FaceitGraphs_backend
@@ -26,24 +28,24 @@ namespace FaceitGraphs_backend
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>();
+            //services.AddDbContext<DataContext>();
             services.AddCors();
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddHttpClient();
-            //services.AddControllers().AddNewtonsoftJson(options =>options.SerializerSettings.ReferenceLoopHandling =ReferenceLoopHandling.Ignore);
+            services.AddControllers(); 
+                //.AddNewtonsoftJson(options =>options.SerializerSettings.ReferenceLoopHandling =ReferenceLoopHandling.Ignore);
             //var appSettingsSection = _configuration.GetSection("AppSettings");
             //services.Configure<AppSettings>(appSettingsSection);
 
-            services.AddScoped<IPlayerProvider, PlayerProvider>();
+            services.AddScoped<IPlayerProvider, PlayersProvider>();
+            services.AddScoped<PlayersService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseDeveloperExceptionPage();
+        
             
 
             app.UseRouting();
@@ -55,10 +57,10 @@ namespace FaceitGraphs_backend
             );
             // app.UseAuthentication();
             // app.UseAuthorization();
-            app.UseEndpoints(endpoints => //endpoints.MapController());
-            {
-                endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Hello World"); });
-            });
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
+            // {
+            //     endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Hello World"); });
+            // });
         }
     }
 }
