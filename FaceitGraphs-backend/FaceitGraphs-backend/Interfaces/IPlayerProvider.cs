@@ -5,6 +5,8 @@ namespace FaceitGraphs_backend.Interfaces
 {
     public interface IPlayerProvider
     { 
-        Task<PlayerDTO> GetPlayerById(string playerId);
+        Task<PlayerDTO> RequestGetPlayerById(string playerId);
+        Task<PlayerDTO> RequestGetPlayerByParameters(string playerName);
+        Task<PlayerDTO> RequestGetPlayerByParameters(string game, string gamePlayerId);
     }
 }

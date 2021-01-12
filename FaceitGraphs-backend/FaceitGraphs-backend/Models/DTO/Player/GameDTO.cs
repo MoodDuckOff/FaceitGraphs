@@ -14,7 +14,6 @@ namespace FaceitGraphs_backend.Models.DTO.Player
         [JsonProperty("region")] public string Region { get; set; }
 
         [JsonProperty("regions")]
-        [JsonExtensionData]
         public IDictionary<string, RegionDTO> Regions { get; set; }
 
         [JsonProperty("skill_level")] public int SkillLevel { get; set; }
